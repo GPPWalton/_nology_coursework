@@ -1,4 +1,6 @@
 .movieCard{
     border: 2px solid wheat;
     border-style: dashed;
+    padding: 10px;
+    margin: 10px;
 }
