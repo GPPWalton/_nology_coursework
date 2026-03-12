@@ -1,7 +1,7 @@
 .prettierrc
 javascript_ws/*/index.js
 
-react_ws/react_lesson_1/*
+react_ws/react_lesson_*/*
 
 # Logs
 logs
