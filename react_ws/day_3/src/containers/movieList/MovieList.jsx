@@ -3,6 +3,18 @@ import style from "./MovieList.module.css";
 const MovieList = ({ movieData }) => {
     return (
         <section className={style.movieList}>
+            {/* Forbidden fruit of a dynamically generated MovieCard components */}
+            {/* {movieData.map(data => {
+                return (
+                    <MovieCard
+                        id={data.id}
+                        title={data.title}
+                        director={data.director}
+                        year={data.year}
+                        rating={data.rating}
+                    />
+                );
+            })} */}
             <MovieCard
                 id={movieData[0].id}
                 title={movieData[0].title}
