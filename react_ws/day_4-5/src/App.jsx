@@ -49,14 +49,7 @@ function App () {
                     <h2>Core Concepts</h2>
                     <ul>
                         {coreConcepts.map(coreConcept => {
-                            return (
-                                <CoreConcepts
-                                    title={coreConcept.title}
-                                    description={coreConcept.description}
-                                    img={coreConcept.img}
-                                    alt={coreConcept.alt}
-                                />
-                            );
+                            return <CoreConcepts {...coreConcept} />;
                         })}
                     </ul>
                 </section>
