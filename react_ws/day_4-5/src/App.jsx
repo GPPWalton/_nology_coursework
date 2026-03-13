@@ -4,6 +4,7 @@ import componentImg from "/assets/components.png";
 import jsxImg from "/assets/jsx-ui.png";
 import propsImg from "/assets/config.png";
 import stateImg from "/assets/state-mgmt.png";
+import TabButton from "./components/tabButton/TabButton";
 
 const getRandomWord = wordList => {
     return wordList[Math.floor(Math.random() * wordList.length)];
@@ -52,6 +53,15 @@ function App () {
                             return <CoreConcepts {...coreConcept} />;
                         })}
                     </ul>
+                </section>
+                <section id='examples'>
+                    <h2>Examples</h2>
+                    <menu>
+                        <TabButton>Components</TabButton>
+                        <TabButton>JSX</TabButton>
+                        <TabButton>Props</TabButton>
+                        <TabButton>State</TabButton>
+                    </menu>
                 </section>
             </main>
         </section>
