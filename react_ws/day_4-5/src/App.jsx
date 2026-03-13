@@ -10,7 +10,7 @@ const getRandomWord = wordList => {
     return wordList[Math.floor(Math.random() * wordList.length)];
 };
 function App () {
-    const [currentTab, setCurrentTab] = useState("components");
+    const [currentTab, setCurrentTab] = useState();
 
     const handleTabButtonClick = value => {
         setCurrentTab(value);
@@ -53,7 +53,16 @@ function App () {
                         </TabButton>
                     </menu>
                 </section>
-                <TabContent examples={examples} currentTab={currentTab} />
+                <section id='tab-content'>
+                    {currentTab == null ? (
+                        <p>Examples can be viewed here</p>
+                    ) : (
+                        <TabContent
+                            examples={examples}
+                            currentTab={currentTab}
+                        />
+                    )}
+                </section>
             </main>
         </section>
     );
