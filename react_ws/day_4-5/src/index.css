@@ -56,7 +56,7 @@ main {
 
 #core-concepts {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   padding: 2rem;
   border-radius: 6px;
   background-color: #140524;
@@ -75,8 +75,9 @@ main h2 {
   padding: 0;
   margin: 0;
   display: flex;
+  align-items: center;
   gap: 2rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   justify-content: center;
 }
 
@@ -94,7 +95,10 @@ main h2 {
 #core-concepts li h3 {
   margin: 0.5rem 0;
 }
-
+#core-concepts img {
+  width: 100px;
+  height: 100px;
+}
 #core-concepts li p {
   font-size: 0.9rem;
 }
