@@ -1,47 +1,23 @@
 import CoreConcepts from "./components/coreConcepts/CoreConcepts";
 import Header from "./components/header/Header";
-import componentImg from "/assets/components.png";
-import jsxImg from "/assets/jsx-ui.png";
-import propsImg from "/assets/config.png";
-import stateImg from "/assets/state-mgmt.png";
+import { coreConcepts } from "./data/coreConceptsData";
+import { examples } from "./data/exampleData";
 import TabButton from "./components/tabButton/TabButton";
+import { useState } from "react";
+import TabContent from "./components/TabContent/TabContent";
 
 const getRandomWord = wordList => {
     return wordList[Math.floor(Math.random() * wordList.length)];
 };
 function App () {
+    const [currentTab, setCurrentTab] = useState("components");
+
+    const handleTabButtonClick = value => {
+        setCurrentTab(value);
+    };
     const keyWords = ["Crucial", "Fundamental", "Core"];
     const keyword = getRandomWord(keyWords);
-    const coreConcepts = [
-        {
-            title: "Components",
-            description:
-                "The core UI building block - compose the user interface by combining multiple components.",
-            alt: "component icon",
-            img: componentImg
-        },
-        {
-            title: "JSX",
-            description:
-                "Return (potentially dynamic) HTML(ish) code to define the actual markup that will be rendered.",
-            alt: "jsx icon",
-            img: jsxImg
-        },
-        {
-            title: "Props",
-            description:
-                "Make components configurable (and therefore reusable) by passing input data to them.",
-            alt: "props icon",
-            img: propsImg
-        },
-        {
-            title: "State",
-            description:
-                "React-managed data which, when changed, causes the component to re-render & the UI to update.",
-            alt: "state icon",
-            img: stateImg
-        }
-    ];
+
     return (
         <section>
             <Header keyword={keyword} />
@@ -57,12 +33,27 @@ function App () {
                 <section id='examples'>
                     <h2>Examples</h2>
                     <menu>
-                        <TabButton>Components</TabButton>
-                        <TabButton>JSX</TabButton>
-                        <TabButton>Props</TabButton>
-                        <TabButton>State</TabButton>
+                        <TabButton
+                            onClick={() => handleTabButtonClick("components")}
+                        >
+                            Components
+                        </TabButton>
+                        <TabButton onClick={() => handleTabButtonClick("jsx")}>
+                            JSX
+                        </TabButton>
+                        <TabButton
+                            onClick={() => handleTabButtonClick("props")}
+                        >
+                            Props
+                        </TabButton>
+                        <TabButton
+                            onClick={() => handleTabButtonClick("state")}
+                        >
+                            State
+                        </TabButton>
                     </menu>
                 </section>
+                <TabContent examples={examples} currentTab={currentTab} />
             </main>
         </section>
     );
