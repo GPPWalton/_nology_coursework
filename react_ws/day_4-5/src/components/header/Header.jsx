@@ -1,4 +1,5 @@
 import reactImg from "/assets/react-core-concepts.png";
+import "./Header.module.css";
 const Header = ({ keyword }) => {
     return (
         <header>

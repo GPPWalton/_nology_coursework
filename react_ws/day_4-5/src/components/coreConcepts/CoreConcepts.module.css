@@ -1,0 +1,21 @@
+.coreConcepts li {
+  width: 10rem;
+  text-align: center;
+}
+
+.coreConcepts li img {
+  height: 4rem;
+  width: 6rem;
+  object-fit: cover;
+}
+
+.coreConcepts li h3 {
+  margin: 0.5rem 0;
+}
+.coreConcepts img {
+  width: 100px;
+  height: 100px;
+}
+.coreConcepts li p {
+  font-size: 0.9rem;
+}
