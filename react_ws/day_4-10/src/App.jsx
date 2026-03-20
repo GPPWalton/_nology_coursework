@@ -35,19 +35,25 @@ function App () {
                     <menu>
                         <TabButton
                             onClick={() => handleTabButtonClick("components")}
+                            isSelected={currentTab === "components"}
                         >
                             Components
                         </TabButton>
-                        <TabButton onClick={() => handleTabButtonClick("jsx")}>
+                        <TabButton
+                            onClick={() => handleTabButtonClick("jsx")}
+                            isSelected={currentTab === "jsx"}
+                        >
                             JSX
                         </TabButton>
                         <TabButton
                             onClick={() => handleTabButtonClick("props")}
+                            isSelected={currentTab === "props"}
                         >
                             Props
                         </TabButton>
                         <TabButton
                             onClick={() => handleTabButtonClick("state")}
+                            isSelected={currentTab === "state"}
                         >
                             State
                         </TabButton>
