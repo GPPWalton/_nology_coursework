@@ -1,0 +1,15 @@
+{
+    "name": "day_13",
+    "version": "1.0.0",
+    "description": "_nology node folder day_13",
+    "license": "ISC",
+    "author": "Gabrel Walton",
+    "type": "commonjs",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "dependencies": {
+        "express": "^5.2.1"
+    }
+}
