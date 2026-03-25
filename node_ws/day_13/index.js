@@ -1,42 +1,46 @@
 const express = require("express");
 
 const api = express();
+const cors = require("cors");
 api.use(express.json());
-//root handler
-api.get("/", (req, res) => {
-    res.send("Hello World!");
-});
-api.post(`/`, (req, res) => {
-    const body = req.body;
-    res.send("Post Request Success!");
-    console.log(`body here: ${body.message})}`);
-});
+api.use(
+    cors({
+        origin: "http://localhost:5173", // Frontend origin
+        methods: ["GET", "POST", "PUT", "DELETE"],
+        credentials: true
+    })
+);
 
 //////////////////////////////
-const tasks = [
-    "Learn Rust",
-    "Learn Scala",
-    "Make a TTRPG adventure",
-    "Drawing practice"
-];
-api.get("/tasks", (req, res) => {
-    res.send(tasks);
-});
-api.get("/tasks/:id", (req, res) => {
-    const id = req.params.id;
-    if (id < 0 || id > tasks.length) {
-        res.send(`Please enter an id between 0 and ${tasks.length}.`);
-    } else {
-        res.send(tasks[id]);
+// toDo item : { id: number, text: string, isComplete: bool }
+const todo_list = [
+    {
+        id: "19021996",
+        text: "shenanigans",
+        isComplete: false
     }
+];
+api.get("/todo-list", (req, res) => {
+    res.send(todo_list);
 });
-api.post("/tasks", (req, res) => {
+
+api.post("/todo-list", (req, res) => {
     const task = req.body.task;
 
-    tasks.push(task);
-    res.send(`New task "${task}" added to tasks`);
+    todo_list.push(task);
+    res.send(`New task "${task.text}" added to todo-list`);
+});
+
+api.delete("/todo-list/:id", (req, res) => {
+    const id = req.params.id;
+    const index = todo_list.findIndex(object => object.id === id);
+    if (index < 0 || index > todo_list.length - 1) {
+        res.send("Index of element is invalid");
+    }
+    todo_list.splice(index, 1);
+    res.send(`item at ${id} has been deleted`);
 });
 
 api.listen(3000, () => {
-    console.log("API running on port 3000");
+    console.log("Todo-list API running on port 3000");
 });
