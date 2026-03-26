@@ -2,9 +2,9 @@ const express = require("express");
 const env = require("dotenv").config({ path: "../../.env" });
 const api = express();
 const cors = require("cors");
-const { MongoClient, ServerApiVersion } = require("mongodb");
+const { TodoModel } = require("./models/todo.model.js");
 const mongoose = require("mongoose");
-
+const { MongoClient, ServerApiVersion } = require("mongodb");
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_URL}`;
 
 api.use(express.json());
@@ -16,11 +16,21 @@ api.use(
     })
 );
 /////////////////////
-mongoose.connect(uri);
-// const Cat = mongoose.model("Cat", { name: String });
+const testo = new TodoModel({
+    id: Date.now(),
+    text: "Test stuff",
+    isComplete: false
+});
+// above works
+mongoose.connect(uri).then(() => {
+    try {
+        console.log("Connected to database.");
+    } catch (error) {
+        console.error("An error occured: ", error);
+    }
+});
+//test save data entry
 
-// const kitty = new Cat({ name: "Zildjian" });
-// kitty.save().then(() => console.log("meow"));
 //////////////////////////////
 // toDo item : { id: number, text: string, isComplete: bool }
 const todo_list = [];
