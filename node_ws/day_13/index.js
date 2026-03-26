@@ -1,7 +1,12 @@
 const express = require("express");
-
+const env = require("dotenv").config({ path: "../../.env" });
 const api = express();
 const cors = require("cors");
+const { MongoClient, ServerApiVersion } = require("mongodb");
+const mongoose = require("mongoose");
+
+const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASSWORD}@${process.env.DB_URL}`;
+
 api.use(express.json());
 api.use(
     cors({
@@ -10,7 +15,12 @@ api.use(
         credentials: true
     })
 );
+/////////////////////
+mongoose.connect(uri);
+// const Cat = mongoose.model("Cat", { name: String });
 
+// const kitty = new Cat({ name: "Zildjian" });
+// kitty.save().then(() => console.log("meow"));
 //////////////////////////////
 // toDo item : { id: number, text: string, isComplete: bool }
 const todo_list = [];

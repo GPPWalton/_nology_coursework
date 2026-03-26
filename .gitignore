@@ -2,7 +2,7 @@
 javascript_ws/*/index.js
 
 react_ws/react_lesson_*/*
-
+.env 
 # Logs
 logs
 *.log
