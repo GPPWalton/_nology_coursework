@@ -41,6 +41,11 @@ api.delete("/todo-list/:id", (req, res) => {
     res.send(`item at ${id} has been deleted`);
 });
 
+api.delete("/todo-list/clear", (req, res) => {
+    todo_list.splice(0, todo_list.length);
+    res.send("Todo list cleared from the server");
+});
+
 api.listen(3000, () => {
     console.log("Todo-list API running on port 3000");
 });
