@@ -17,20 +17,24 @@ api.use(
 
 //////////////////////////////
 // toDo item : { id: number, text: string, isComplete: bool }
-const todo_list = [];
+//GET Request
 api.get("/todo-list", async (req, res) => {
     const list = await TodoModel.find({}).exec();
-    console.log(list);
     res.send(list);
 });
 
+//POST Request (add button)
 api.post("/todo-list", async (req, res) => {
     const task = req.body.task;
-
-    await TodoModel.create(task);
-    res.send(`New task "${task.text}" added to todo-list`);
+    try {
+        await TodoModel.create(task);
+        res.send(`New task "${task.text}" added to todo-list`);
+    } catch (error) {
+        res.send("Something went wrong:", error);
+    }
 });
 
+//DELETE Request - singular entry (delete button)
 api.delete("/todo-list/:id", async (req, res) => {
     const id = req.params.id;
     try {
@@ -42,6 +46,7 @@ api.delete("/todo-list/:id", async (req, res) => {
     res.send(`item at ${id} has been deleted`);
 });
 
+//DELETE Request - all entries (reset button)
 api.delete("/todo-list/clear", async (req, res) => {
     try {
         await TodoModel.deleteMany().exec();
