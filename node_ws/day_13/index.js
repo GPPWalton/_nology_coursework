@@ -13,13 +13,7 @@ api.use(
 
 //////////////////////////////
 // toDo item : { id: number, text: string, isComplete: bool }
-const todo_list = [
-    {
-        id: "19021996",
-        text: "shenanigans",
-        isComplete: false
-    }
-];
+const todo_list = [];
 api.get("/todo-list", (req, res) => {
     res.send(todo_list);
 });
